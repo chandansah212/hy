@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import {useGetAllPostQuery,useGetPostIdQuery,useGetPostByLimitQuery,useDeletePostMutation,useCreatePostMutation} from './services/Post'
 function App() {
