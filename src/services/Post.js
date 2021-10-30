@@ -1,0 +1,54 @@
+import {createApi,fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+export const postApi=createApi({
+    reducerPath:'postApi',
+    baseQuery:fetchBaseQuery({
+        baseUrl:'https://jsonplaceholder.typicode.com/',
+    }),
+
+    endpoints:(builder)=>({
+        getAllPost:builder.query({
+            query:()=>({
+                url:'posts',
+                method:'GET'
+            })
+        }),
+        getPostId:builder.query({
+            query:(id)=>{
+                console.log("Id:",id)
+                return{
+                url:`posts/${id}`,
+                method:'GET'
+            }}
+        }),
+        getPostByLimit:builder.query({
+          query:(num)=>{
+              return{
+                  url:`posts?_limit=${num}`,
+                  method:'GET'
+              }
+          }  
+        }),
+        deletePost:builder.mutation({
+            mutation:(id)=>{
+                return{
+                    url:`posts/${id}`,
+                    method:'DELETE'
+                }
+            }
+        }),
+        createPost:builder.mutation({
+            query:(newpost)=>{
+                console.log(newpost)
+                return{
+                    url:`posts`,
+                    method:'POST',
+                    body:newpost,
+                    headers:{
+                        'content-type':'application/json;charset=UTF-8'
+                    }
+                }
+            }
+        })
+    })
+})
+export const { useGetAllPostQuery,useGetPostIdQuery,useGetPostByLimitQuery,useDeletePostMutation,useCreatePostMutation }= postApi
