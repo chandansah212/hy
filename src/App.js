@@ -30,7 +30,7 @@ const newpost={
     
     
     
-     {/* {responseIn.data.map((post,i)=>
+     {responseIn.data.map((post,i)=>
      
      <div key={i}>
         <h2>{post.id}:{post.title}</h2>
@@ -42,7 +42,7 @@ const newpost={
 
      )}
      <h2>{responseInf.data.id}:{responseInf.data.title}</h2>
-     */}
+    
     </div>
   );
 }
